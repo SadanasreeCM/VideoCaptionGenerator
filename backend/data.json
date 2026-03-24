@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "id": "69023392-2350-4990-9454-81d8c61ad8dc",
+      "email": "cmsadanasree@gmail.com",
+      "passwordHash": "$2b$10$5/jmlYR63pcXXSikLvoPv.62dncLg3M0CD1uNxAEGAFcedaRNhwHm",
+      "name": "Sadana",
+      "provider": "local",
+      "createdAt": "2026-02-27T10:40:05.481Z"
+    },
+    {
+      "id": "b48e0e18-c0a0-40de-84a4-b96d2d748a6a",
+      "email": "rooba@gmail.com",
+      "passwordHash": "$2b$10$dnyEF7IxATcyquAqtNkCJ.sourmfKtOol0YQST.9auz6fRZ9dp/kO",
+      "name": "Rooba",
+      "provider": "local",
+      "createdAt": "2026-02-27T12:19:27.503Z"
+    },
+    {
+      "id": "fa3793a9-3311-4fdf-a4a0-03119f3fb0b2",
+      "email": "rithika@gmail.com",
+      "passwordHash": "$2b$10$fkwakUYKq9oSsDlIy5NK1uUQGoWnYx2MRet8LSv8RLDRfgBBxkcQq",
+      "name": "rithika",
+      "provider": "local",
+      "createdAt": "2026-02-28T03:52:03.882Z"
+    },
+    {
+      "id": "6a2b9f50-575c-4a50-bdeb-cb25e4893f33",
+      "email": "sadana@gmail.com",
+      "passwordHash": "$2b$10$8jOZl41GNdCE9FDbyHofN.Qn2.po37FL8cdlF6Pf7HWldzU.4.vKu",
+      "name": "sadana",
+      "provider": "local",
+      "createdAt": "2026-02-28T06:22:46.957Z"
+    }
+  ]
+}
