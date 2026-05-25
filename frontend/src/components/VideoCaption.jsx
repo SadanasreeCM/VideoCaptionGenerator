@@ -53,6 +53,23 @@ export default function VideoCaption({ file, previewUrl, captionData, language, 
     }
   }
 
+  const downloadTranscript = () => {
+    if (!segments.length) return
+    const content = segments.map((seg) => seg.text).join('\n')
+    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' })
+    const url = URL.createObjectURL(blob)
+    const link = document.createElement('a')
+    const langLabel = language === 'source'
+      ? (captionData?.sourceLanguage || captionData?.sourceLang || 'source')
+      : language
+    link.href = url
+    link.download = `transcript-${langLabel}.txt`
+    document.body.appendChild(link)
+    link.click()
+    link.remove()
+    setTimeout(() => URL.revokeObjectURL(url), 0)
+  }
+
   return (
     <div className="preview">
       <div className="video-wrap">
@@ -80,6 +97,7 @@ export default function VideoCaption({ file, previewUrl, captionData, language, 
           <div className="panel-meta">
             <span>{segments.length} segments</span>
             <button className="ghost mini" onClick={copyCurrentCaption}>Copy current line</button>
+            <button className="ghost mini" onClick={downloadTranscript}>Download transcript</button>
           </div>
           <div className="segments">
             {segments.map((seg, idx) => (
