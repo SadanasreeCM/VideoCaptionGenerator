@@ -14,15 +14,23 @@ const allowedOrigins = [
 ]
 
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
+  origin: (origin, callback) => {
+    // allow requests with no origin
+    if (!origin) return callback(null, true)
+
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true)
     }
+
+    return callback(new Error('Not allowed by CORS'))
   },
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 }))
+
+// Handle preflight requests
+app.options('*', cors())
 
 // ROUTES
 app.use('/api/captions', captionRoutes)
