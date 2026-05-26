@@ -1,4 +1,4 @@
-﻿const API_BASE = 'https://videocaptiongenerator.onrender.com/api/caption'
+﻿const API_BASE = 'https://videocaptiongenerator.onrender.com'
 
 export function setToken(token) {
   if (token) {
