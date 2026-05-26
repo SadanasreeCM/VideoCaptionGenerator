@@ -16,7 +16,15 @@ import dns from 'dns/promises'
 const router = express.Router()
 const upload = multer({ dest: 'uploads/' })
 
-ffmpeg.setFfmpegPath(ffmpegPath)
+if (ffmpegPath) {
+  try {
+    fs.chmodSync(ffmpegPath, 0o755)
+    ffmpeg.setFfmpegPath(ffmpegPath)
+    console.log('FFmpeg path set:', ffmpegPath)
+  } catch (err) {
+    console.error('Failed to set FFmpeg permissions:', err)
+  }
+}
 
 let speechClient = null
 let translateClient = null
@@ -365,7 +373,6 @@ router.post('/burn', upload.single('video'), async (req, res) => {
       const filter = `subtitles='${srtFilterPath}':force_style='FontName=Arial,FontSize=24,PrimaryColour=&HFFFFFF&,OutlineColour=&H000000&,Outline=2,Shadow=1'`
 
       ffmpeg(inputPath)
-        .setFfmpegPath(ffmpegPath)
         .outputOptions([
           '-y',
           '-c:v libx264',

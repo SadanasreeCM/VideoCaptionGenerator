@@ -1,4 +1,4 @@
-﻿const API_BASE = ''
+﻿const API_BASE = 'https://videocaptiongenerator.onrender.com/api/caption'
 
 export function setToken(token) {
   if (token) {
@@ -82,7 +82,7 @@ export async function transcribeVideo({ file, videoUrl, sourceLanguage, targetLa
     formData.append('targetLanguage', targetLanguage)
   }
 
-  const res = await fetch('/api/captions/transcribe', {
+  const res = await fetch(`${API_BASE}/api/captions/transcribe`, {
     method: 'POST',
     body: formData,
     headers: token ? { Authorization: `Bearer ${token}` } : undefined
@@ -108,7 +108,7 @@ export async function renderBurnedVideo({ file, captions, language }) {
   formData.append('captions', JSON.stringify(captions))
   formData.append('language', language)
 
-  const res = await fetch('/api/captions/burn', {
+  const res = await fetch(`${API_BASE}/api/captions/burn`, {
     method: 'POST',
     body: formData,
     headers: token ? { Authorization: `Bearer ${token}` } : undefined
