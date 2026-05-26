@@ -12,12 +12,10 @@ import { connectDb } from './db.js'
 
 const app = express()
 
-app.use(
-  cors({
-    origin: config.frontendUrl,
-    credentials: true
-  })
-)
+
+app.use(cors({
+  origin: 'https://video-caption-generator.netlify.app'
+}))
 app.use(express.json({ limit: '50mb' }))
 app.use(cookieParser())
 app.use(
