@@ -1,6 +1,6 @@
 ﻿import express from 'express'
 import cors from 'cors'
-import captionRoutes from './routes/caption.js'
+import captionRoutes from './routes/captions.js'
 import authRoutes from './routes/auth.js'
 
 const app = express()
